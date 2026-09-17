@@ -74,7 +74,7 @@ p,h2,h3,figure,dl,dd{margin:0}
 .h3{font:400 32px/1.15 var(--serif);font-stretch:87.5%}
 
 /* ============ header ============ */
-.top{position:absolute;inset:0 0 auto 0;height:80px;padding:0 var(--gut);display:flex;align-items:center;gap:44px;z-index:10}
+.top{position:sticky;top:0;height:72px;padding:0 var(--gut);display:flex;align-items:center;gap:44px;z-index:40;background:rgba(244,246,245,.92);border-bottom:1px solid var(--line);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
 .logo{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
 .logo__ka{font:400 23px/1 var(--geo)}
 .nav{display:flex;gap:30px}
@@ -84,12 +84,12 @@ p,h2,h3,figure,dl,dd{margin:0}
 
 /* ============ hero ============ */
 .hero{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);
-  padding:0 var(--gut);height:clamp(760px,100svh,980px);overflow-x:clip}
+  padding:0 var(--gut);height:clamp(680px,calc(100svh - 72px),920px);overflow-x:clip}
 @supports not (overflow:clip){.hero{overflow:hidden}}
 .hero__media{grid-column:8/-1;grid-row:1;margin-right:calc(-1*var(--gut));overflow:hidden;background:#8d9799}
 .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:57% 50%;filter:saturate(.9)}
 .hero__body{grid-column:1/8;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto auto;
-  padding:132px 0 40px;min-width:0}
+  padding:52px 0 40px;min-width:0}
 .hero__intro{grid-row:1;max-width:33ch}
 .hero__lede{font-size:19px;line-height:1.5}
 .hero__meta{margin-top:10px;font-size:16px;color:var(--pebble)}
@@ -135,9 +135,9 @@ html.js .hygro__static{display:none}
 .photo{position:relative;overflow:hidden;background:var(--mist)}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
 .cap{margin-top:14px;font-size:15px;line-height:1.45;color:var(--pebble);max-width:36ch}
-.svc__fan{grid-column:1/5;grid-row:2;align-self:start;position:sticky;top:32px;margin-top:64px}
+.svc__fan{grid-column:1/5;grid-row:2;align-self:start;margin-top:64px}
 .svc__fan .photo{aspect-ratio:5/4}
-.svc__nail{grid-column:9/-1;grid-row:3/5;align-self:start;position:sticky;top:32px;margin-top:96px}
+.svc__nail{grid-column:9/-1;grid-row:3/5;align-self:start;margin-top:96px}
 .svc__nail .photo{aspect-ratio:4/5}
 .svc__nail img{object-position:50% 0;transform:scale(1.25);transform-origin:50% 0}
 .grp{min-width:0}
@@ -172,7 +172,11 @@ html.js .hygro__static{display:none}
 .axis>span:first-child{transform:none}
 .axis .s{display:none}
 .rrs{list-style:none;margin:0;padding:0}
-.rr{align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.rr{align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.rr__txt{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:20px}
+.rr__name{grid-column:1}
+.rr__val{grid-column:2;justify-self:end;text-align:right;margin-top:0}
+.rr__foot{grid-column:1/-1}
 .rr__name{font-size:19px;line-height:1.35}
 .rr__val{margin-top:6px;font:400 34px/1.05 var(--serif);font-stretch:87.5%}
 .rr__foot{display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;margin-top:4px;font-size:16px;color:var(--pebble)}
@@ -198,11 +202,11 @@ html.js .hygro__static{display:none}
 /* ============ masters ============ */
 .team__h{grid-column:1/4;grid-row:1}
 .team__note{grid-column:1/4;grid-row:2;margin-top:24px;max-width:26ch;color:var(--pebble);font-size:17px}
-.team__list{grid-column:4/-1;grid-row:1/4;list-style:none;margin:0;padding:6px 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px var(--gap);align-items:start}
-.m{display:flex;align-items:flex-start;gap:16px;min-width:0}
-.m__name{flex:none;font:300 clamp(64px,6.4vw,96px)/.8 var(--serif);font-stretch:75%;white-space:nowrap}
-.m__spec{max-width:14ch;padding-top:4px;font-size:16px;line-height:1.4}
-.m__days{display:block;margin-top:4px;color:var(--pebble);font-size:15px;white-space:nowrap}
+.team__list{grid-column:4/-1;grid-row:1/4;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 calc(var(--gap)*2);align-items:start}
+.m{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:20px;row-gap:2px;padding:20px 0 18px;border-top:1px solid var(--line)}
+.m__name{grid-column:1;grid-row:1;font:300 clamp(34px,3.2vw,46px)/1.05 var(--serif);font-stretch:87.5%;white-space:nowrap}
+.m__days{grid-column:2;grid-row:1;justify-self:end;color:var(--pebble);font-size:15px;white-space:nowrap}
+.m__spec{grid-column:1/-1;grid-row:2;max-width:32ch;font-size:16px;line-height:1.45;color:var(--pebble)}
 
 /* ============ atmosphere ============ */
 .atm{padding-top:0}
@@ -267,7 +271,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
 
 /* short laptop screens: keep the instrument inside the first screen */
 @media (min-width:1100px) and (max-height:820px){
-  .hero__body{padding-top:108px;padding-bottom:28px}
+  .hero__body{padding-top:24px;padding-bottom:28px}
   .hero__word{margin-bottom:26px}
   .hygro__foot{margin-top:32px}
   .scale{margin-top:24px}
@@ -280,7 +284,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
 /* ============ tablet 601–1099 ============ */
 @media (max-width:1099px){
   :root{--gut:32px;--sec:104px}
-  .top{position:relative;height:76px;gap:28px}
+  .top{height:64px;gap:24px}
   .nav{gap:22px}
   .nav a{font-size:15px}
   .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px}
@@ -326,7 +330,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
 
   .team__h{grid-column:1/-1}
   .team__note{grid-column:1/-1;grid-row:2;max-width:52ch}
-  .team__list{grid-column:1/-1;grid-row:3;margin-top:48px;gap:44px 32px}
+  .team__list{grid-column:1/-1;grid-row:3;margin-top:40px;gap:0 40px}
   .m__name{font-size:60px}
   .m__spec{font-size:15px}
 
@@ -388,34 +392,41 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
   .svc__nail .photo{aspect-ratio:1/1;margin:0 calc(-1*var(--gut))}
   .svc__nail img{transform:scale(1.2);object-position:50% 0}
   .svc__nail .cap{text-align:left}
-  .cols{display:none}
-  .row{grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:16px 0 15px}
-  .row__name{grid-column:1;grid-row:1;font-size:17px}
-  .row__price{grid-column:2;grid-row:1;font-size:25px}
-  .row__time,.row__hold{grid-column:1/-1;font-size:15px}
-  .row__time{grid-row:2}
-  .row__hold{grid-row:3}
-  .row .k{position:static;width:auto;height:auto;overflow:visible;clip:auto}
-  .row__fit{grid-row:4}
+  .cols{grid-template-columns:minmax(0,1fr) auto;column-gap:14px;padding:10px 0 8px;font-size:12.5px;
+    letter-spacing:.02em;border-bottom:1px solid var(--ink)}
+  .cols span:first-child,.cols span:last-child{display:none}
+  .cols span:nth-child(2){grid-column:1}
+  .cols span:nth-child(3){grid-column:2;text-align:right}
+  .row{grid-template-columns:minmax(0,1fr) auto;column-gap:14px;row-gap:1px;padding:13px 0 12px;align-items:baseline}
+  .row__name{grid-column:1;grid-row:1;font-size:16.5px;line-height:1.3}
+  .row__price{grid-column:2;grid-row:1;font-size:23px}
+  .row__time{grid-column:1;grid-row:2;font-size:14px}
+  .row__hold{grid-column:2;grid-row:2;font-size:14px;text-align:right;white-space:nowrap}
+  .row .k{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .row__fit{grid-row:3;margin-top:4px;font-size:14px}
+  .grp .h3{font-size:26px}
 
   .hum__lede{font-size:17px;margin-top:20px}
   .ruler{margin-top:48px}
   .hum .h2{font-size:46px}
   .axis{font-size:13px}
-  .rr__name{font-size:17px}
-  .rr__val{font-size:30px}
-  .rr__track{height:28px}
+  .rr{padding:16px 0;row-gap:8px}
+  .rr__txt{column-gap:14px}
+  .rr__name{font-size:16.5px;line-height:1.3}
+  .rr__val{font-size:24px;white-space:nowrap}
+  .rr__foot{margin-top:2px;font-size:14px}
+  .rr__track{height:22px}
   .hum__note{grid-row:auto;margin-top:48px}
   .hum__note--a,.hum__note--b{grid-column:1}
   .hum__note--b{margin-top:36px}
   .hum__note p{font-size:16px}
 
   .team__note{font-size:16px;margin-top:18px}
-  .team__list{margin-top:36px;grid-template-columns:minmax(0,1fr);gap:28px}
-  .m{flex-direction:column;gap:6px}
-  .m__name{font-size:60px}
-  .m__spec{max-width:none;font-size:16px;padding-top:0}
-  .m__days{display:inline;margin:0 0 0 10px}
+  .team__list{margin-top:28px;grid-template-columns:minmax(0,1fr);gap:0}
+  .m{padding:15px 0 14px;column-gap:14px}
+  .m__name{font-size:30px}
+  .m__spec{max-width:none;font-size:15.5px}
+  .m__days{font-size:14px}
 
   .atm{padding:0}
   .atm__big{grid-column:1;grid-row:1;aspect-ratio:9/16;max-height:none}
@@ -510,8 +521,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
           <p class="hygro__text hygro__live" id="hum-text" aria-live="polite">Обычный день у моря. Укладка без защиты теряет форму за 2–3 часа, брашинг с фиксацией обычно держится до вечера.</p>
           <p class="hygro__text hygro__static">Влажность в Батуми обычно 70–80%. Укладка без защиты теряет форму за 2–3 часа, брашинг с фиксацией обычно держится до вечера.</p>
           <div class="hygro__actions">
-            <a class="btn" id="hero-cta" href="#zapis">Записаться</a>
-            <a class="link" href="#uslugi">Цены</a>
+            <a class="link" href="#uslugi">Услуги и цены</a>
           </div>
         </div>
       </div>
@@ -605,7 +615,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
             <div class="rr__txt">
               <p class="rr__name">Укладка без защиты</p>
               <p class="rr__val">2–3 часа</p>
-              <p class="rr__foot">Мытьё и брашинг, 60 лари <a class="link" href="#zapis" data-service="brash">Записаться<span class="sr"> на мытьё и брашинг</span></a></p>
+              <p class="rr__foot">Мытьё и брашинг, 60 лари</p>
             </div>
             <div class="rr__track" aria-hidden="true"><span class="rr__bar" style="--a:8.6%;--b:13.63%"></span></div>
           </li>
@@ -613,7 +623,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
             <div class="rr__txt">
               <p class="rr__name">Брашинг с термозащитой и фиксацией</p>
               <p class="rr__val">6–10 часов</p>
-              <p class="rr__foot">70 лари <a class="link" href="#zapis" data-service="brash-fix">Записаться<span class="sr"> на брашинг с фиксацией</span></a></p>
+              <p class="rr__foot">70 лари</p>
             </div>
             <div class="rr__track" aria-hidden="true"><span class="rr__bar" style="--a:22.23%;--b:28.57%"></span></div>
           </li>
@@ -621,7 +631,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
             <div class="rr__txt">
               <p class="rr__name">Уход против пушения</p>
               <p class="rr__val">2–3 недели</p>
-              <p class="rr__foot">4–6 мытья головы, 120 лари <a class="link" href="#zapis" data-service="care">Записаться<span class="sr"> на уход против пушения</span></a></p>
+              <p class="rr__foot">4–6 мытья головы, 120 лари</p>
             </div>
             <div class="rr__track" aria-hidden="true"><span class="rr__bar" style="--a:72.18%;--b:77.21%"></span></div>
           </li>
@@ -629,7 +639,7 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
             <div class="rr__txt">
               <p class="rr__name">Кератиновое выпрямление</p>
               <p class="rr__val">2–3 месяца</p>
-              <p class="rr__foot">от 350 лари <a class="link" href="#zapis" data-service="keratin">Записаться<span class="sr"> на кератиновое выпрямление</span></a></p>
+              <p class="rr__foot">от 350 лари</p>
             </div>
             <div class="rr__track" aria-hidden="true"><span class="rr__bar" style="--a:90.24%;--b:95.27%"></span></div>
           </li>
@@ -656,11 +666,11 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
       <h2 class="h2 team__h" id="team-h">Мастера</h2>
       <p class="team__note">Хотите к конкретному мастеру? Скажите администратору, когда он перезвонит подтвердить запись.</p>
       <ul class="team__list">
-        <li class="m"><span class="m__name">Нино</span><span class="m__spec">Стрижки и укладка, вьющиеся волосы<span class="m__days">пн–пт</span></span></li>
-        <li class="m"><span class="m__name">Мариам</span><span class="m__spec">Цвет: корни, тон, аиртач, балаяж<span class="m__days">вт–сб</span></span></li>
-        <li class="m"><span class="m__name">Ольга</span><span class="m__spec">Кератин и уход против пушения<span class="m__days">ср–вс</span></span></li>
-        <li class="m"><span class="m__name">Эка</span><span class="m__spec">Маникюр и педикюр<span class="m__days">пн–пт</span></span></li>
-        <li class="m"><span class="m__name">Лиана</span><span class="m__spec">Брови и маникюр<span class="m__days">чт–пн</span></span></li>
+        <li class="m"><span class="m__name">Нино</span><span class="m__days">пн–пт</span><span class="m__spec">Стрижки и укладка, вьющиеся волосы</span></li>
+        <li class="m"><span class="m__name">Мариам</span><span class="m__days">вт–сб</span><span class="m__spec">Цвет: корни, тон, аиртач, балаяж</span></li>
+        <li class="m"><span class="m__name">Ольга</span><span class="m__days">ср–вс</span><span class="m__spec">Кератин и уход против пушения</span></li>
+        <li class="m"><span class="m__name">Эка</span><span class="m__days">пн–пт</span><span class="m__spec">Маникюр и педикюр</span></li>
+        <li class="m"><span class="m__name">Лиана</span><span class="m__days">чт–пн</span><span class="m__spec">Брови и маникюр</span></li>
       </ul>
     </div>
   </section>
@@ -782,11 +792,6 @@ select.inp{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:poi
     <p class="credits">Фото: Tim Foster, Lu и Courtney Spittle (Unsplash), cottonbro studio и Anna Nekrashevich (Pexels).</p>
   </div>
 </footer>
-
-<nav class="mbar" id="mbar" aria-label="Быстрые действия">
-  <a class="link" href="#uslugi">Цены</a>
-  <a class="btn" href="#zapis">Записаться</a>
-</nav>
 
 <script>
 (function () {
